@@ -3,7 +3,10 @@
 #define IMGUI_DEFINE_MATH_OPERATORS
 #include <imgui.h>
 
-namespace ImGG { namespace internal {
+namespace ImGG
+{
+namespace internal
+{
 
 inline auto line_height() -> float
 {
@@ -17,7 +20,7 @@ inline auto button_size() -> ImVec2
 
 inline auto gradient_position(float x_offset) -> ImVec2
 {
-    return ImGui::GetCursorScreenPos() + ImVec2(x_offset, 0.f);
+    return {ImGui::GetCursorScreenPos().x + x_offset, ImGui::GetCursorScreenPos().y};
 }
 
 inline auto border_color() -> ImU32
@@ -25,4 +28,5 @@ inline auto border_color() -> ImU32
     return ImGui::GetColorU32(ImGuiCol_Border);
 }
 
-}} // namespace ImGG::internal
+} // namespace internal
+} // namespace ImGG
