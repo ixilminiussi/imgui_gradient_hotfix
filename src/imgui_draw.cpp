@@ -51,11 +51,9 @@ void draw_gradient(ImDrawList &draw_list, const Gradient &gradient, const ImVec2
 {
     assert(!gradient.is_empty());
     float current_starting_x = gradient_position.x;
-    int i = 0;
     for (auto mark_iterator = gradient.get_marks().begin(); mark_iterator != gradient.get_marks().end();
          ++mark_iterator) // We need to use iterators because we need to access the previous element from time to time
     {
-        ImGui::PushID(i);
         const Mark &mark = *mark_iterator;
 
         const auto color_right = mark.color;
@@ -95,8 +93,6 @@ void draw_gradient(ImDrawList &draw_list, const Gradient &gradient, const ImVec2
                 assert(false && "Unknown Interpolation enum value.");
             }
         }
-        ImGui::PopID();
-        i++;
         current_starting_x = to;
     }
     // If the last element is not at the end position, extend its color to the end position
